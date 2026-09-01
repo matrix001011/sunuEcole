@@ -1,0 +1,222 @@
+Parfait, tu veux le premier design exact que j'avais fait en HTML (dégradé #3B82F6 → #1E3A8A, les 2 cercles qui se chevauchent, boutons blancs) mais 100% en Kotlin Compose dans ton projet com.android.sunucole.
+
+Voici le code complet à coller. Tu remplaces tout.
+
+1. Dans build.gradle.kts (app) ajoute
+Kotlin
+dependencies {
+    implementation(platform("androidx.compose:compose-bom:2024.09.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.activity:activity-compose:1.8.2")
+}
+
+1 ligne masquée
+2. ui/theme/Color.kt
+Kotlin
+package com.android.sunucole.ui.theme
+import androidx.compose.ui.graphics.Color
+
+val SunuBlue = Color(0xFF3B82F6)
+val SunuBlueDark = Color(0xFF1E3A8A)
+val White15 = Color(0x26FFFFFF)
+
+1 ligne masquée
+3. MainActivity.kt - REMPLACE tout ce que tu as sur ta photo
+Kotlin
+package com.android.sunucole
+
+import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.android.sunucole.ui.screens.WelcomeScreen
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            WelcomeScreen(
+                onEleveClick = {
+                    Toast.makeText(this, "Je suis Élève cliqué", Toast.LENGTH_SHORT).show()
+                    // startActivity(Intent(this, LoginActivity::class.java))
+                },
+                onEnseignantClick = {
+                    Toast.makeText(this, "Espace Enseignant bientôt", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
+}
+
+19 lignes masquées
+4. ui/screens/WelcomeScreen.kt - CRÉE ce fichier, c'est ta capture exacte
+C'est le même que le premier artifact HTML, mais en Kotlin :
+
+Kotlin
+package com.android.sunucole.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.android.sunucole.ui.theme.SunuBlue
+import com.android.sunucole.ui.theme.SunuBlueDark
+
+@Composable
+fun WelcomeScreen(
+    onEleveClick: () -> Unit,
+    onEnseignantClick: () -> Unit
+) {
+    // val = couleur qui ne change jamais
+    val gradient = Brush.verticalGradient(listOf(SunuBlue, SunuBlueDark))
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(gradient)
+            .padding(28.dp)
+    ) {
+        // Fond décoratif comme sur ton HTML
+        Box(modifier = Modifier.size(600.dp).offset(x = 150.dp, y = (-120).dp).background(Color.White.copy(0.06f), CircleShape))
+        Box(modifier = Modifier.size(4.dp).offset(20.dp, 110.dp).background(Color.White, CircleShape))
+        Box(modifier = Modifier.size(6.dp).offset(80.dp, 145.dp).background(Color.White.copy(0.6f), CircleShape))
+
+        // Header logo
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.align(Alignment.TopStart)
+        ) {
+            Box(
+                Modifier.size(44.dp).clip(CircleShape).background(Color.White),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("📖", fontSize = 20.sp)
+            }
+            Spacer(Modifier.width(10.dp))
+            Text("Sunu Ecole", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+        }
+
+        // Titre
+        Column(modifier = Modifier.align(Alignment.TopStart).padding(top = 90.dp)) {
+            Text("Bienvenue à\nSunu Ecole", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Bold, lineHeight = 36.sp)
+            Spacer(Modifier.height(12.dp))
+            Text("La plateforme qui t'accompagne jusqu'au BAC", color = Color.White.copy(0.8f), fontSize = 13.sp, fontWeight = FontWeight.Medium)
+        }
+
+        // Illustration 2 cercles qui s'entrecroisent - comme ton croquis
+        Box(
+            modifier = Modifier
+                .size(230.dp)
+                .align(Alignment.Center)
+        ) {
+            // Petit cercle gauche avec bulle
+            Box(
+                modifier = Modifier
+                    .size(108.dp)
+                    .align(Alignment.TopStart)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(0.15f))
+                    .border(1.dp, Color.White.copy(0.25f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    Modifier.size(78.dp).clip(CircleShape).background(Color.White),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("💬", fontSize = 28.sp)
+                }
+                Box(
+                    Modifier.size(18.dp).align(Alignment.TopEnd).clip(CircleShape).background(Color.White),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Box(Modifier.size(8.dp).clip(CircleShape).background(Color(0xFF10B981)))
+                }
+            }
+
+            // Gros cercle droite avec livre
+            Box(
+                modifier = Modifier
+                    .size(156.dp)
+                    .align(Alignment.BottomEnd)
+                    .clip(CircleShape)
+                    .background(Color.White),
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    Modifier.size(118.dp).clip(CircleShape).background(Color(0xFFEFF6FF)).border(1.dp, Color(0xFFDBEAFE), CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("📖", fontSize = 48.sp)
+                }
+                // Petite pastille diplôme
+                Box(
+                    Modifier.size(32.dp).offset(x = (-50).dp, y = (-20).dp).clip(CircleShape).background(SunuBlueDark),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("🎓", fontSize = 16.sp)
+                }
+            }
+        }
+
+        // Boutons bas - exactement comme capture
+        Column(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Button(
+                onClick = onEleveClick,
+                modifier = Modifier.fillMaxWidth().height(56.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+            ) {
+                Text("Je suis Élève", color = SunuBlueDark, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    Modifier.size(24.dp).clip(CircleShape).background(Color(0xFFEFF6FF)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("→", color = SunuBlueDark, fontWeight = FontWeight.Bold)
+                }
+            }
+
+            OutlinedButton(
+                onClick = onEnseignantClick,
+                modifier = Modifier.fillMaxWidth().height(56.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
+                border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(0.3f))
+            ) {
+                Text("Je suis Enseignant", fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+            }
+
+            Text(
+                "Veuillez vous connecter pour continuer",
+                color = Color.White.copy(0.7f),
+                fontSize = 12.sp,
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 4.dp)
+            )
+        }
+    }
+}
+
+151 lignes masquées
+Résultat : C'est 100% identique à ton premier artifact HTML et à la photo Screenshot_2026-08-12_20.42.19.png que tu m'as envoyée, mais maintenant en Kotlin natif dans ton projet.
+
+Supprime activity_main.xml, ton MainActivity n'en a plus besoin.
+
+Tu lances sur ton TECNO SPARK 10c et tu as le même écran.
+
+Tu veux que je te fasse maintenant le code Kotlin du 2ème écran Inscription avec Nom/Prénom côte à côte + Spinner classe TS/TL + Radio Matières en gardant ce même design ?
+
