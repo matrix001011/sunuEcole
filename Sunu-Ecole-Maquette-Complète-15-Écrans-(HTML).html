@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sunu Ecole - Maquette Complète 15 Écrans</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:Inter,sans-serif}
+.poppins{font-family:Poppins,sans-serif}
+.phone{box-shadow:0 25px 80px rgba(0,0,0,0.25),0 0 0 12px #111}
+.scroll-hide::-webkit-scrollbar{display:none}
+.scroll-hide{-ms-overflow-style:none;scrollbar-width:none}
+</style>
+</head>
+<body class="bg-[#EEF2FF] min-h-screen flex flex-col items-center py-6 px-4">
+<div class="max-w-6xl w-full mb-6">
+<h1 class="poppins text-2xl font-bold text-slate-800">Sunu Ecole - Maquette Complète 15 Écrans</h1>
+<p class="text-slate-500 text-sm mt-1">Prototype Android • Élève + Enseignant + Système • Basé sur tes croquis Maths/PC/SVT/Anglais/FR/Esp/Ara/Philo + classes 3e/2nde/1ère/TS-TL/6e-5e-4e</p>
+</div>
+<div class="flex gap-8 flex-wrap justify-center items-start w-full max-w-7xl">
+<div class="phone w-[390px] h-[820px] bg-white rounded-[36px] overflow-hidden relative flex flex-col shrink-0">
+<div class="flex-1 flex flex-col relative overflow-hidden" id="app">
+
+<!-- SPLASH -->
+<div id="screen-splash" class="screen absolute inset-0 bg-gradient-to-br from-[#3B82F6] to-[#1E3A8A] flex flex-col items-center justify-center z-50">
+<div class="w-24 h-24 bg-white rounded-[24px] flex items-center justify-center shadow-xl text-4xl">📚</div>
+<h1 class="poppins text-white text-3xl font-bold mt-6">Sunu Ecole</h1>
+<p class="text-blue-100 text-xs mt-2 tracking-[0.2em] uppercase">Apprendre • Partager • Réussir</p>
+<div class="absolute bottom-12 flex flex-col items-center">
+<div class="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+<p class="text-white/70 text-xs mt-3">Chargement...</p>
+</div>
+</div>
+
+<!-- WELCOME -->
+<div id="screen-welcome" class="screen hidden absolute inset-0 bg-gradient-to-br from-[#3B82F6] to-[#1E3A8A] flex flex-col p-6">
+<div class="flex justify-between items-center mt-2">
+<div class="flex items-center gap-2"><div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center">📚</div><span class="text-white font-bold">Sunu Ecole</span></div>
+<span class="text-white/60 text-xs">v1.0</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center text-center">
+<div class="flex gap-3 mb-8">
+<div class="w-16 h-16 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center text-2xl">💬</div>
+<div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl -mt-2 text-2xl">📖</div>
+</div>
+<h1 class="poppins text-white text-[26px] font-bold leading-tight">Bienvenue à<br>Sunu Ecole</h1>
+<p class="text-blue-100 text-sm mt-3 max-w-[260px]">Plateforme e-learning sénégalaise pour 6e, 3e, 2nde, 1ère, TS/TL</p>
+</div>
+<div class="space-y-3 pb-4">
+<button onclick="go('login')" class="w-full bg-white text-[#2563EB] font-bold py-4 rounded-2xl shadow-lg">Je suis Élève</button>
+<button onclick="go('teacherDash')" class="w-full bg-white/10 border border-white/30 text-white font-semibold py-4 rounded-2xl backdrop-blur">Je suis Enseignant</button>
+<p class="text-center text-white/60 text-xs pt-2">Veuillez vous connecter pour continuer</p>
+</div>
+</div>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="h-[38%] bg-gradient-to-br from-blue-500 to-blue-800 relative p-6">
+<button onclick="go('welcome')" class="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center text-white">←</button>
+<div class="absolute -bottom-10 left-6 right-6 bg-white rounded-[20px] shadow-xl p-5">
+<h2 class="font-bold text-slate-800 text-lg">Veuillez vous connecter</h2>
+<p class="text-slate-400 text-xs mt-1">Sunu Ecole • Élève • Image de fond éducative</p>
+</div>
+</div>
+<div class="flex-1 p-6 pt-14 space-y-4 overflow-auto">
+<div><label class="text-xs font-semibold text-slate-600">Email</label><input class="w-full mt-1.5 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" value="inssa@ecole.sn"></div>
+<div><label class="text-xs font-semibold text-slate-600">Mot de passe</label><input type="password" class="w-full mt-1.5 px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" value="123456"><div class="flex justify-end mt-2"><button onclick="go('forgot')" class="text-blue-600 text-xs font-semibold">Mot de passe oublié ?</button></div></div>
+<button onclick="go('dashboard')" class="w-full bg-[#2563EB] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200">Se connecter</button>
+<div class="flex items-center gap-3 py-1"><div class="h-px flex-1 bg-slate-200"></div><span class="text-xs text-slate-400">ou</span><div class="h-px flex-1 bg-slate-200"></div></div>
+<button class="w-full border border-slate-200 py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm font-semibold">Se connecter avec Google</button>
+<p class="text-center text-xs text-slate-500 pt-2">Vous n'avez pas de compte ? <button onclick="go('inscription')" class="text-blue-600 font-bold">Créer un compte</button></p>
+</div>
+</div>
+
+<!-- INSCRIPTION -->
+<div id="screen-inscription" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-6 pt-6 pb-3 border-b border-slate-100 flex items-center gap-3"><button onclick="go('login')" class="w-9 h-9 bg-slate-100 rounded-full flex items-center justify-center">←</button><div class="flex-1"><p class="text-xs text-slate-400 font-semibold tracking-widest uppercase">ÉTAPE 1 SUR 2</p><div class="w-full h-1.5 bg-slate-100 rounded-full mt-1"><div class="w-1/2 h-full bg-blue-600 rounded-full"></div></div></div></div>
+<div class="flex-1 overflow-auto p-6 space-y-4">
+<h2 class="poppins font-bold text-xl">Inscription Élève</h2>
+<div class="grid grid-cols-2 gap-3"><div><label class="text-xs font-semibold">Nom</label><input class="w-full mt-1 px-4 py-3 bg-slate-50 border rounded-xl text-sm" placeholder="Diop"></div><div><label class="text-xs font-semibold">Prénom</label><input class="w-full mt-1 px-4 py-3 bg-slate-50 border rounded-xl text-sm" placeholder="Inssa"></div></div>
+<div><label class="text-xs font-semibold">Adresse Email</label><input class="w-full mt-1 px-4 py-3 bg-slate-50 border rounded-xl text-sm" placeholder="inssa@..."></div>
+<div><label class="text-xs font-semibold">Mot de passe</label><input type="password" class="w-full mt-1 px-4 py-3 bg-slate-50 border rounded-xl text-sm" placeholder="••••••••"></div>
+<div><label class="text-xs font-semibold">Confirmer</label><input type="password" class="w-full mt-1 px-4 py-3 bg-slate-50 border rounded-xl text-sm" placeholder="••••••••"></div>
+<div class="pt-2"><label class="text-xs font-bold text-slate-700">Choix de la classe</label><select class="w-full mt-1.5 px-4 py-3 bg-slate-50 border rounded-xl text-sm"><option>6ème</option><option>5ème</option><option>4ème</option><option selected>3ème</option><option>2nde</option><option>1ère</option><option>Tle</option><option>TS</option><option>TL</option><option>TS/TL</option></select><p class="text-[10px] text-slate-400 mt-1">Croquis: 3e / 2nd S/L / 1er S/L / TS/TL + 6e-5e-4e demandés</p></div>
+<div><label class="text-xs font-bold">Matière principale</label><div class="grid grid-cols-2 gap-2 mt-2"><label class="flex items-center gap-2 p-2.5 border rounded-xl text-xs"><input type="radio" name="mat" checked> Maths</label><label class="flex items-center gap-2 p-2.5 border rounded-xl text-xs"><input type="radio" name="mat"> PC</label><label class="flex items-center gap-2 p-2.5 border rounded-xl text-xs"><input type="radio" name="mat"> SVT</label><label class="flex items-center gap-2 p-2.5 border rounded-xl text-xs"><input type="radio" name="mat"> Anglais</label></div></div>
+<button onclick="go('verify')" class="w-full bg-[#2563EB] text-white font-bold py-4 rounded-xl mt-2">S'inscrire</button>
+<p class="text-[10px] text-slate-400 text-center">Code vérif via SMS ou Email ou Appel</p>
+</div>
+</div>
+
+<!-- VERIFY -->
+<div id="screen-verify" class="screen hidden absolute inset-0 bg-white flex flex-col p-6">
+<button onclick="go('inscription')" class="w-9 h-9 bg-slate-100 rounded-full flex items-center justify-center">←</button>
+<div class="flex-1 flex flex-col items-center pt-12 text-center"><div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl">📩</div><h2 class="font-bold text-xl mt-5">Code de vérification</h2><p class="text-slate-400 text-sm mt-2 max-w-[260px]">Envoyé via SMS / Email</p><div class="flex gap-2 mt-8"><div class="w-12 h-14 border-2 border-blue-600 rounded-xl flex items-center justify-center font-bold">4</div><div class="w-12 h-14 border rounded-xl flex items-center justify-center font-bold">8</div><div class="w-12 h-14 border rounded-xl flex items-center justify-center font-bold">2</div><div class="w-12 h-14 border rounded-xl flex items-center justify-center font-bold">9</div></div><button onclick="go('dashboard')" class="w-full bg-[#2563EB] text-white font-bold py-4 rounded-xl mt-8">Vérifier</button><button class="text-xs text-slate-400 mt-4">Renvoyer (32s)</button></div>
+</div>
+
+<!-- FORGOT -->
+<div id="screen-forgot" class="screen hidden absolute inset-0 bg-white flex flex-col p-6">
+<button onclick="go('login')" class="w-9 h-9 bg-slate-100 rounded-full">←</button>
+<div id="f1" class="mt-8"><h2 class="font-bold text-xl">Mot de passe oublié</h2><p class="text-slate-400 text-sm mt-2">Étape 1: Demander l'email</p><input class="w-full mt-6 px-4 py-3.5 bg-slate-50 border rounded-xl text-sm" placeholder="votre@email.com"><button onclick="document.getElementById('f1').classList.add('hidden');document.getElementById('f2').classList.remove('hidden')" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl mt-6">Envoyer le code</button></div>
+<div id="f2" class="hidden mt-8"><h2 class="font-bold text-xl">Code OTP</h2><p class="text-slate-400 text-sm mt-2">Étape 2: 4 champs _ _ _ _</p><div class="flex gap-3 mt-6"><div class="w-14 h-14 border-2 border-blue-600 rounded-xl flex items-center justify-center font-bold">_</div><div class="w-14 h-14 border rounded-xl flex items-center justify-center">_</div><div class="w-14 h-14 border rounded-xl flex items-center justify-center">_</div><div class="w-14 h-14 border rounded-xl flex items-center justify-center">_</div></div><button onclick="document.getElementById('f2').classList.add('hidden');document.getElementById('f3').classList.remove('hidden')" class="w-full bg-blue-600 text-white py-4 rounded-xl mt-6 font-bold">Valider</button></div>
+<div id="f3" class="hidden mt-8"><h2 class="font-bold text-xl">Nouveau mot de passe</h2><p class="text-slate-400 text-sm mt-2">Étape 3</p><input type="password" class="w-full mt-6 px-4 py-3.5 bg-slate-50 border rounded-xl text-sm" placeholder="Nouveau mot de passe"><input type="password" class="w-full mt-3 px-4 py-3.5 bg-slate-50 border rounded-xl text-sm" placeholder="Confirmer"><button onclick="go('login')" class="w-full bg-blue-600 text-white py-4 rounded-xl mt-6 font-bold">Réinitialiser</button></div>
+</div>
+
+<!-- DASHBOARD ELEVE -->
+<div id="screen-dashboard" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 pt-6 pb-4 bg-white flex justify-between items-center"><div class="flex items-center gap-3"><div onclick="go('profil')" class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold cursor-pointer">IN</div><div><p class="font-bold text-sm">Bonjour Inssa 👋</p><p class="text-[11px] text-slate-400">1ère S • Matin</p></div></div><div class="relative"><span class="text-xl">🔔</span><span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center font-bold">3</span></div></div>
+<div class="flex-1 overflow-auto p-5 space-y-5 scroll-hide">
+<div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[20px] p-4 text-white flex justify-between items-center"><div><p class="text-white/70 text-xs uppercase font-semibold">Ma Classe Actuelle</p><p class="font-bold text-lg mt-1">1ère S</p><p class="text-xs text-white/80 mt-1">2025-2026 • 32 cours</p></div><div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">🎓</div></div>
+<div class="grid grid-cols-2 gap-3">
+<button onclick="go('cours')" class="bg-white rounded-2xl p-4 text-left shadow-sm border"><div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">📚</div><p class="font-bold text-sm mt-3">Mes Cours</p><p class="text-[11px] text-slate-400 mt-1">8 matières</p></button>
+<button onclick="go('devoirs')" class="bg-white rounded-2xl p-4 text-left shadow-sm border"><div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">✏️</div><p class="font-bold text-sm mt-3">Devoirs à rendre</p><p class="text-[11px] text-slate-400 mt-1">3 à rendre</p></button>
+<button onclick="go('classement')" class="bg-white rounded-2xl p-4 text-left shadow-sm border"><div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center">🏆</div><p class="font-bold text-sm mt-3">Mes Classements</p><p class="text-[11px] text-slate-400 mt-1">Top 12</p></button>
+<button class="bg-white rounded-2xl p-4 text-left shadow-sm border"><div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center">💬</div><p class="font-bold text-sm mt-3">Forum</p><p class="text-[11px] text-slate-400 mt-1">24 msg</p></button>
+</div>
+<div><div class="flex justify-between items-center"><p class="font-bold text-sm">Derniers cours consultés</p><span class="text-xs text-blue-600 font-semibold">Voir tout</span></div><div class="flex gap-3 overflow-auto mt-3 scroll-hide pb-2"><div class="min-w-[160px] bg-white rounded-2xl p-3 border"><p class="text-xs font-bold">Maths - Chap 3</p><p class="text-[10px] text-slate-400 mt-1">Fonctions</p><div class="w-full h-1 bg-slate-100 rounded-full mt-3"><div class="w-3/4 h-full bg-blue-600 rounded-full"></div></div></div><div class="min-w-[160px] bg-white rounded-2xl p-3 border"><p class="text-xs font-bold">PC - Chap 2</p><p class="text-[10px] text-slate-400 mt-1">Acides</p><div class="w-full h-1 bg-slate-100 rounded-full mt-3"><div class="w-1/2 h-full bg-orange-500 rounded-full"></div></div></div><div class="min-w-[160px] bg-white rounded-2xl p-3 border"><p class="text-xs font-bold">SVT - Chap1</p><p class="text-[10px] text-slate-400 mt-1">Génétique</p><div class="w-full h-1 bg-slate-100 rounded-full mt-3"><div class="w-1/4 h-full bg-emerald-500 rounded-full"></div></div></div></div></div>
+<div class="bg-white rounded-2xl p-4 border"><p class="font-bold text-xs uppercase text-slate-400">D'après ton croquis manuscrit</p><div class="grid grid-cols-2 gap-2 mt-3 text-xs"><div class="p-2.5 bg-slate-50 rounded-xl flex justify-between"><span>Maths</span><span class="font-bold">PC</span></div><div class="p-2.5 bg-slate-50 rounded-xl flex justify-between"><span>SVT</span><span>Anglais</span></div><div class="p-2.5 bg-slate-50 rounded-xl flex justify-between"><span>FR</span><span>Esp</span></div><div class="p-2.5 bg-blue-50 rounded-xl border border-blue-200 flex justify-between text-blue-700 font-semibold"><span>Ara</span><span>Philo (TS/TL)</span></div></div></div>
+</div>
+<div class="h-[72px] bg-white border-t flex justify-around items-center px-2">
+<button class="flex flex-col items-center"><span class="text-blue-600">🏠</span><span class="text-[10px] font-bold text-blue-600 mt-1">Accueil</span></button>
+<button onclick="go('cours')" class="flex flex-col items-center opacity-60"><span>📚</span><span class="text-[10px] mt-1">Cours</span></button>
+<button onclick="go('devoirs')" class="flex flex-col items-center opacity-60"><span>✏️</span><span class="text-[10px] mt-1">Devoirs</span></button>
+<button onclick="go('classement')" class="flex flex-col items-center opacity-60"><span>🏆</span><span class="text-[10px] mt-1">Top</span></button>
+<button onclick="go('profil')" class="flex flex-col items-center opacity-60"><span>👤</span><span class="text-[10px] mt-1">Profil</span></button>
+</div>
+</div>
+
+<!-- COURS LISTE -->
+<div id="screen-cours" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-white border-b flex items-center gap-3"><button onclick="go('dashboard')" class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center">←</button><h2 class="font-bold">Mes Cours • 1ère S</h2></div>
+<div class="flex-1 overflow-auto p-4 space-y-3 scroll-hide">
+<div onclick="go('chapters')" class="bg-white rounded-2xl p-4 border flex items-center gap-4 cursor-pointer hover:shadow-md"><div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-xl">📐</div><div class="flex-1"><p class="font-bold text-sm">Mathématiques</p><p class="text-xs text-slate-400">M. Sow • 12 chapitres</p></div><span class="px-3 py-1.5 bg-blue-600 text-white rounded-full text-xs font-bold">Accéder</span></div>
+<div onclick="go('chapters')" class="bg-white rounded-2xl p-4 border flex items-center gap-4 cursor-pointer"><div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-xl">⚗️</div><div class="flex-1"><p class="font-bold text-sm">Physique-Chimie</p><p class="text-xs text-slate-400">Mme Diagne • 9 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs font-bold">Accéder</span></div>
+<div class="bg-white rounded-2xl p-4 border flex items-center gap-4"><div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-xl">🧬</div><div class="flex-1"><p class="font-bold text-sm">SVT</p><p class="text-xs text-slate-400">M. Ndiaye • 8 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Accéder</span></div>
+<div class="bg-white rounded-2xl p-4 border flex items-center gap-4"><div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-xl">🇬🇧</div><div class="flex-1"><p class="font-bold text-sm">Anglais</p><p class="text-xs text-slate-400">Ms Johnson • 6 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Accéder</span></div>
+<div class="bg-white rounded-2xl p-4 border flex items-center gap-4"><div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-xl">🇫🇷</div><div class="flex-1"><p class="font-bold text-sm">Français</p><p class="text-xs text-slate-400">Mme Ba • 10 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Accéder</span></div>
+<div class="bg-white rounded-2xl p-4 border flex items-center gap-4"><div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-xl">🇪🇸</div><div class="flex-1"><p class="font-bold text-sm">Espagnol</p><p class="text-xs text-slate-400">M. Garcia • 5 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Accéder</span></div>
+<div class="bg-white rounded-2xl p-4 border flex items-center gap-4"><div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-xl">📜</div><div class="flex-1"><p class="font-bold text-sm">Philosophie (TS/TL)</p><p class="text-xs text-slate-400">M. Kanté • 7 chapitres</p></div><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Accéder</span></div>
+</div>
+</div>
+
+<!-- CHAPTERS -->
+<div id="screen-chapters" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="go('cours')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><div><h2 class="font-bold text-sm">Mathématiques • 1ère S</h2><p class="text-[11px] text-slate-400">Une fois cliquer sur une matière ce qui apparaît</p></div></div>
+<div class="flex-1 overflow-auto p-4">
+<div class="border rounded-2xl overflow-hidden text-[12px]">
+<div class="grid grid-cols-6 bg-slate-50 font-bold p-2.5 border-b"><span>Classe</span><span>Chap1</span><span>Chap2</span><span>Chap3</span><span>Chap4</span><span>etc</span></div>
+<div class="grid grid-cols-6 p-2.5 border-b items-center"><span class="font-semibold">Maths</span><span class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">✓</span><span>•</span><span>•</span><span>•</span><span>→</span></div>
+<div class="grid grid-cols-6 p-2.5 border-b items-center"><span>PC</span><span>•</span><span class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">✓</span><span>•</span><span>•</span><span></span></div>
+<div class="grid grid-cols-6 p-2.5 border-b items-center"><span>SVT</span><span>•</span><span>•</span><span class="w-6 h-6 bg-emerald-500 rounded flex items-center justify-center text-white">✓</span><span>•</span><span></span></div>
+</div>
+<div class="mt-6 space-y-2">
+<div onclick="go('lecteur')" class="p-4 border-2 border-blue-600 bg-blue-50 rounded-2xl cursor-pointer"><p class="font-bold text-sm">Chap 1: Fonctions numériques</p><p class="text-xs text-slate-500 mt-1">Vidéo 12min + PDF + Quiz</p></div>
+<div class="p-4 border rounded-2xl"><p class="font-bold text-sm">Chap 2: Dérivation</p><p class="text-xs text-slate-500">À venir</p></div>
+<div class="p-4 border rounded-2xl"><p class="font-bold text-sm">Chap 3: Suites</p><p class="text-xs text-slate-500">À venir</p></div>
+</div>
+</div>
+</div>
+
+<!-- LECTEUR -->
+<div id="screen-lecteur" class="screen hidden absolute inset-0 bg-black flex flex-col">
+<div class="h-12 flex items-center justify-between px-4 text-white"><button onclick="go('chapters')">← Retour</button><div class="flex items-center gap-2"><div class="w-20 h-1 bg-white/20 rounded-full"><div class="w-3/5 h-full bg-white rounded-full"></div></div><span class="text-xs">Chap 1/4</span></div></div>
+<div class="h-[38%] bg-[#111] flex items-center justify-center relative"><div class="text-6xl">▶️</div><span class="absolute bottom-3 left-3 bg-red-600 text-white text-[10px] px-2 py-1 rounded">YouTube • Fonctions</span></div>
+<div class="flex-1 bg-white rounded-t-[20px] -mt-3 p-5 overflow-auto space-y-4">
+<h2 class="font-bold">Résumé du cours</h2><p class="text-sm text-slate-500 leading-6">Ce chapitre couvre les fonctions numériques, domaine de définition, variations, limites. Vidéo intégrée + support PDF.</p>
+<div><h3 class="font-bold text-sm">Documents joints</h3><div class="flex gap-2 mt-2"><div class="px-3 py-2 bg-slate-50 border rounded-xl flex items-center gap-2 text-xs">📄 Cours.pdf ⬇️</div><div class="px-3 py-2 bg-slate-50 border rounded-xl flex items-center gap-2 text-xs">📊 Exos.pdf ⬇️</div></div></div>
+<div class="flex gap-2 pt-4"><button class="flex-1 bg-slate-900 text-white py-3 rounded-xl text-sm font-bold">💬 Commenter</button><button class="flex-1 bg-blue-600 text-white py-3 rounded-xl text-sm font-bold">❓ Poser question</button></div>
+</div>
+</div>
+
+<!-- DEVOIRS -->
+<div id="screen-devoirs" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-white border-b flex items-center gap-3"><button onclick="go('dashboard')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold">Devoirs et Exercices</h2></div>
+<div class="p-4 flex gap-2"><span class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">À faire (2)</span><span class="px-3 py-1.5 bg-white border rounded-full text-xs">En cours</span><span class="px-3 py-1.5 bg-white border rounded-full text-xs">Rendu</span></div>
+<div class="flex-1 overflow-auto p-4 space-y-3">
+<div onclick="go('depot')" class="bg-white rounded-2xl p-4 border-l-4 border-l-orange-500 shadow-sm cursor-pointer"><div class="flex justify-between"><p class="font-bold text-sm">Exercice Fonctions</p><span class="px-2 py-1 bg-orange-50 text-orange-600 rounded-full text-[10px] font-bold">À FAIRE</span></div><p class="text-xs text-slate-400 mt-1">Maths • Rendu: 15 Août</p></div>
+<div class="bg-white rounded-2xl p-4 border-l-4 border-l-blue-500"><div class="flex justify-between"><p class="font-bold text-sm">TP Acide-Base</p><span class="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold">EN COURS</span></div><p class="text-xs text-slate-400 mt-1">PC • Rendu: 18 Août</p></div>
+<div class="bg-white rounded-2xl p-4 border-l-4 border-l-emerald-500"><div class="flex justify-between"><p class="font-bold text-sm">Dissertation Philo</p><span class="px-2 py-1 bg-emerald-50 text-emerald-600 rounded-full text-[10px] font-bold">RENDU 16/20</span></div><p class="text-xs text-slate-400 mt-1">Philo • Rendu le 10 Août</p></div>
+</div>
+<div class="h-[72px] bg-white border-t flex justify-around items-center px-2"><button onclick="go('dashboard')" class="flex flex-col items-center opacity-60"><span>🏠</span><span class="text-[10px]">Accueil</span></button><button class="flex flex-col items-center"><span class="text-blue-600">✏️</span><span class="text-[10px] font-bold text-blue-600">Devoirs</span></button></div>
+</div>
+
+<!-- DEPOT -->
+<div id="screen-depot" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="go('devoirs')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold text-sm">Dépôt de devoir</h2></div>
+<div class="flex-1 p-5 space-y-4 overflow-auto"><h3 class="font-bold">Exercice Fonctions - Maths</h3><textarea class="w-full h-32 p-4 bg-slate-50 border rounded-2xl text-sm" placeholder="Écrire votre réponse ici..."></textarea><div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center"><p class="text-2xl">📎</p><p class="font-bold text-sm mt-2">Joindre un fichier</p><p class="text-xs text-slate-400">Photo d'exercice ou PDF</p><button class="mt-3 px-4 py-2 bg-slate-900 text-white rounded-full text-xs">Parcourir</button></div><button onclick="go('devoirs')" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl">Envoyer le devoir</button></div>
+</div>
+
+<!-- CLASSEMENT -->
+<div id="screen-classement" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-white border-b flex items-center gap-3"><button onclick="go('dashboard')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold">Classement • 1ère S</h2></div>
+<div class="bg-gradient-to-br from-amber-400 to-orange-500 p-5 text-white"><div class="flex justify-center items-end gap-4"><div class="text-center"><div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center font-bold">AD</div><p class="text-xs mt-2 font-bold">🥈 Aminata</p><p class="text-[10px]">92%</p></div><div class="text-center"><div class="w-20 h-20 bg-white rounded-full flex items-center justify-center font-bold text-orange-600 shadow-xl">IN</div><p class="text-sm mt-2 font-bold">🥇 Inssa</p><p class="text-xs">96%</p></div><div class="text-center"><div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center font-bold">MK</div><p class="text-xs mt-2 font-bold">🥉 Moussa</p><p class="text-[10px]">89%</p></div></div></div>
+<div class="flex-1 overflow-auto p-4 space-y-2"><div class="bg-white rounded-xl p-3 flex items-center gap-3 border"><span class="font-bold text-slate-400 text-sm w-5">4</span><div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs font-bold">FD</div><span class="flex-1 font-semibold text-sm">Fatou Diop</span><span class="font-bold text-sm">84%</span><span>⭐</span></div></div>
+</div>
+
+<!-- PROFIL -->
+<div id="screen-profil" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-white border-b flex items-center gap-3"><button onclick="go('dashboard')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold">Profil Élève</h2></div>
+<div class="flex-1 overflow-auto p-5 space-y-5"><div class="bg-white rounded-[20px] p-6 border text-center"><div class="relative inline-block"><div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl">IN</div><div class="absolute -bottom-1 -right-1 w-7 h-7 bg-slate-900 rounded-full flex items-center justify-center text-white text-xs">📷</div></div><p class="font-bold mt-3">Inssa Mvtrix</p><p class="text-xs text-slate-400">1ère S • Maths principal</p></div><div class="bg-white rounded-2xl border divide-y"><button class="w-full flex justify-between items-center p-4 text-sm"><span>📜 Historique de mes cours</span><span>›</span></button><button class="w-full flex justify-between items-center p-4 text-sm"><span>✏️ Modifier mes informations</span><span>›</span></button><button onclick="go('inscription')" class="w-full flex justify-between items-center p-4 text-sm"><span>🎓 Changer de classe</span><span>›</span></button><button onclick="go('parametres')" class="w-full flex justify-between items-center p-4 text-sm"><span>🔔 Paramètres de notification</span><span>›</span></button><button class="w-full flex justify-between items-center p-4 text-sm"><span>❓ Aide</span><span>›</span></button></div><button onclick="go('welcome')" class="w-full bg-red-50 text-red-600 font-bold py-4 rounded-xl border border-red-100">Déconnexion</button></div>
+</div>
+
+<!-- PARAMETRES -->
+<div id="screen-parametres" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="go('profil')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold">Paramètres</h2></div>
+<div class="flex-1 p-5 space-y-6 overflow-auto">
+<div><p class="text-xs font-bold uppercase text-slate-400">Notifications Push</p><div class="mt-3 space-y-3"><div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl"><span class="text-sm">Recevoir les devoirs</span><div class="w-11 h-6 bg-blue-600 rounded-full relative"><div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div></div></div><div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl"><span class="text-sm">Messages du prof</span><div class="w-11 h-6 bg-blue-600 rounded-full relative"><div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div></div></div><div class="flex justify-between items-center p-3 bg-slate-50 rounded-xl"><span class="text-sm">Rappel de cours</span><div class="w-11 h-6 bg-slate-300 rounded-full relative"><div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div></div></div></div></div>
+<div><p class="text-xs font-bold uppercase text-slate-400">Préférences de lecture</p><select class="w-full mt-3 p-3 bg-slate-50 border rounded-xl text-sm"><option>Qualité vidéo Haute</option><option selected>Moyenne (économie data)</option><option>Basse</option></select><p class="text-[11px] text-slate-400 mt-2">Pour économiser la data mobile au Sénégal</p></div>
+<button class="w-full py-3 border rounded-xl text-sm">Effacer le cache (24 Mo)</button>
+</div>
+</div>
+
+<!-- TEACHER DASH -->
+<div id="screen-teacherDash" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-slate-900 text-white flex justify-between items-center"><div class="flex items-center gap-3"><button onclick="toggleDrawer()" class="text-xl">☰</button><h2 class="font-bold">Dashboard Enseignant</h2></div><div class="w-8 h-8 bg-white/20 rounded-full"></div></div>
+<div id="drawer" class="hidden absolute inset-0 bg-black/40 z-20"><div class="w-64 h-full bg-white p-5 space-y-4"><p class="font-bold">Navigation</p><button onclick="go('teacherDash');toggleDrawer()" class="w-full text-left p-3 bg-slate-900 text-white rounded-xl text-sm">Tableau de bord</button><button onclick="go('createCours');toggleDrawer()" class="w-full text-left p-3 hover:bg-slate-50 rounded-xl text-sm">➕ Créer un cours</button><button onclick="go('eleves');toggleDrawer()" class="w-full text-left p-3 hover:bg-slate-50 rounded-xl text-sm">👥 Élèves</button><button onclick="go('correction');toggleDrawer()" class="w-full text-left p-3 hover:bg-slate-50 rounded-xl text-sm">📝 Corrections</button></div></div>
+<div class="flex-1 overflow-auto p-5 space-y-4">
+<div class="grid grid-cols-3 gap-3"><div class="bg-white p-4 rounded-2xl border text-center"><p class="text-2xl font-bold">24</p><p class="text-[10px] text-slate-400 mt-1">Cours publiés</p></div><div class="bg-white p-4 rounded-2xl border text-center"><p class="text-2xl font-bold">312</p><p class="text-[10px] text-slate-400 mt-1">Élèves inscrits</p></div><div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 text-center"><p class="text-2xl font-bold text-amber-600">8</p><p class="text-[10px] text-amber-700 mt-1">À corriger</p></div></div>
+<div class="bg-white rounded-2xl p-4 border"><p class="font-bold text-sm">Statistiques</p><div class="flex items-end gap-2 h-24 mt-4"><div class="flex-1 bg-blue-100 rounded-t" style="height:60%"></div><div class="flex-1 bg-blue-600 rounded-t" style="height:90%"></div><div class="flex-1 bg-blue-100 rounded-t" style="height:40%"></div><div class="flex-1 bg-blue-600 rounded-t" style="height:75%"></div></div></div>
+<button onclick="go('createCours')" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl">+ Créer un nouveau cours</button>
+</div>
+</div>
+
+<!-- CREATE COURS -->
+<div id="screen-createCours" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="go('teacherDash')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold text-sm">Création de cours</h2></div>
+<div class="flex-1 overflow-auto p-5 space-y-4">
+<input class="w-full p-3 bg-slate-50 border rounded-xl text-sm" placeholder="Titre du cours">
+<select class="w-full p-3 bg-slate-50 border rounded-xl text-sm"><option>Matière</option><option>Maths</option><option>PC</option><option>SVT</option><option>Anglais</option><option>Français</option><option>Philosophie</option></select>
+<div class="p-3 border rounded-xl"><p class="text-xs font-bold">Classe cible (multiple)</p><div class="flex flex-wrap gap-2 mt-2"><label class="text-xs border px-2 py-1 rounded-full"><input type="checkbox" checked> 3ème</label><label class="text-xs border px-2 py-1 rounded-full"><input type="checkbox" checked> 2nde</label><label class="text-xs border px-2 py-1 rounded-full"><input type="checkbox"> 1ère</label><label class="text-xs border px-2 py-1 rounded-full"><input type="checkbox"> TS</label></div></div>
+<textarea class="w-full p-3 bg-slate-50 border rounded-xl text-sm h-20" placeholder="Description du cours (texte enrichi)"></textarea>
+<input class="w-full p-3 bg-slate-50 border rounded-xl text-sm" placeholder="URL Vidéo YouTube">
+<div class="border-2 border-dashed rounded-xl p-4 text-center"><p class="text-sm font-bold">Uploader vidéo OU Pièces jointes PDF/Images</p><p class="text-xs text-slate-400 mt-1">Glisser déposer</p></div>
+<div class="p-3 bg-slate-50 rounded-xl"><p class="text-xs font-bold">Exercices</p><button class="mt-2 text-xs px-3 py-1.5 bg-white border rounded-full">+ QCM</button><button class="mt-2 ml-2 text-xs px-3 py-1.5 bg-white border rounded-full">+ Question ouverte</button></div>
+<button onclick="go('teacherDash')" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl">Publier le cours</button>
+</div>
+</div>
+
+<!-- ELEVES -->
+<div id="screen-eleves" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col">
+<div class="px-5 py-4 bg-white border-b flex items-center gap-3"><button onclick="go('teacherDash')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold">Mes Élèves</h2></div>
+<div class="p-4"><input class="w-full p-3 bg-white border rounded-xl text-sm" placeholder="Rechercher un élève..."></div>
+<div class="flex-1 overflow-auto p-4 space-y-2">
+<div class="bg-white p-3 rounded-xl border flex items-center gap-3"><div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-xs">IN</div><div class="flex-1"><p class="font-bold text-sm">Inssa Diop</p><p class="text-xs text-slate-400">Moy: 16.5/20</p></div><button class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Voir détails</button></div>
+<div class="bg-white p-3 rounded-xl border flex items-center gap-3"><div class="w-10 h-10 bg-slate-100 rounded-full"></div><div class="flex-1"><p class="font-bold text-sm">Aminata Diallo</p><p class="text-xs text-slate-400">Moy: 15/20</p></div><button class="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs">Voir détails</button></div>
+</div>
+</div>
+
+<!-- CORRECTION -->
+<div id="screen-correction" class="screen hidden absolute inset-0 bg-white flex flex-col">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="go('teacherDash')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold text-sm">Correction Devoirs</h2></div>
+<div class="flex-1 overflow-auto p-4 space-y-3">
+<div onclick="document.getElementById('corrDetail').classList.remove('hidden')" class="bg-white border rounded-xl p-3 flex justify-between items-center cursor-pointer"><div><p class="font-bold text-sm">Inssa Diop - Fonctions</p><p class="text-xs text-slate-400">Remis le 14 Août • 📎 fichier.pdf</p></div><span class="text-xs px-2 py-1 bg-orange-50 text-orange-600 rounded-full">À corriger</span></div>
+</div>
+<div id="corrDetail" class="hidden absolute inset-0 bg-white flex flex-col z-10">
+<div class="px-5 py-4 border-b flex items-center gap-3"><button onclick="document.getElementById('corrDetail').classList.add('hidden')" class="w-8 h-8 bg-slate-100 rounded-full">←</button><h2 class="font-bold text-sm">Correction</h2></div>
+<div class="flex-1 flex"><div class="w-1/2 bg-slate-100 p-4 flex items-center justify-center text-xs text-slate-400">Aperçu fichier élève<br>📄 Image / PDF</div><div class="w-1/2 p-4 space-y-3"><textarea class="w-full h-20 p-3 bg-slate-50 border rounded-xl text-xs" placeholder="Commentaires du professeur..."></textarea><div><label class="text-xs font-bold">Note /20</label><input type="range" min="0" max="20" value="16" class="w-full"><p class="font-bold text-center">16/20</p></div><button onclick="document.getElementById('corrDetail').classList.add('hidden')" class="w-full bg-blue-600 text-white py-3 rounded-xl text-xs font-bold">Valider la note et envoyer à l'élève</button></div></div>
+</div>
+</div>
+
+<!-- OFFLINE -->
+<div id="screen-offline" class="screen hidden absolute inset-0 bg-[#F8FAFC] flex flex-col items-center justify-center p-8 text-center">
+<div class="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl">📶</div>
+<h2 class="font-bold text-lg mt-6">Vous êtes hors ligne</h2>
+<p class="text-sm text-slate-400 mt-2 max-w-[260px]">Veuillez vérifier votre connexion internet pour accéder aux cours</p>
+<button onclick="go('dashboard')" class="mt-6 px-6 py-3 bg-slate-900 text-white rounded-full text-sm font-bold">Réessayer</button>
+</div>
+
+</div>
+</div>
+
+<div class="flex-1 min-w-[320px] max-w-[520px] space-y-4">
+<div class="bg-white rounded-2xl p-5 border shadow-sm">
+<h3 class="font-bold">✅ Flow complet implémenté</h3>
+<ul class="mt-3 space-y-2 text-sm text-slate-600">
+<li>• <b>Splash 3s</b> → Welcome dégradé bleu</li>
+<li>• <b>Auth:</b> Login / Inscription Nom Prénom Email Pass confirm + Classe 6e→TS/TL + Matière radio + progress 1/2</li>
+<li>• <b>Système:</b> Forgot 3 étapes Email → OTP 4 cases → New Pass, Offline, Paramètres Push + Qualité vidéo</li>
+<li>• <b>Élève:</b> Dashboard Ma Classe, 4 icônes, Derniers cours, Cours liste, Chapitres tableau croquis Chap1-4, Lecteur sombre + Résumé + PJ + FAB</li>
+<li>• <b>Devoirs:</b> À faire/En cours/Rendu + Dépôt + Joindre fichier</li>
+<li>• <b>Gamification:</b> Podium Or Argent Bronze</li>
+<li>• <b>Enseignant:</b> Drawer, stats, Création cours complet, Élèves, Correction 0-20</li>
+</ul>
+</div>
+<div class="bg-blue-600 rounded-2xl p-5 text-white">
+<p class="font-bold">Tester:</p>
+<p class="text-sm text-blue-100 mt-2">Tout est cliquable. Élève → Cours → Maths → Chap1 → Lecteur, ou Enseignant → Créer cours.</p>
+<div class="flex gap-2 mt-4 flex-wrap">
+<button onclick="go('splash')" class="px-3 py-2 bg-white text-blue-600 rounded-full text-xs font-bold">Splash</button>
+<button onclick="go('dashboard')" class="px-3 py-2 bg-white/20 border border-white/30 rounded-full text-xs">Dashboard Élève</button>
+<button onclick="go('teacherDash')" class="px-3 py-2 bg-white/20 border border-white/30 rounded-full text-xs">Prof</button>
+<button onclick="go('offline')" class="px-3 py-2 bg-white/20 border border-white/30 rounded-full text-xs">Offline</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+function go(id){
+document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+const el=document.getElementById('screen-'+id);
+if(el) el.classList.remove('hidden');
+}
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('hidden');}
+setTimeout(()=>go('welcome'),2500);
+go('splash');
+</script>
+</body>
+</html>
